@@ -69,6 +69,11 @@
     border: black solid 2px;
 }
 
+.overview p{
+    overflow: auto;
+    height: 70%;
+}
+
 .moviecard:hover .overview,
 .moviecard:focus .overview,
 .moviecard:active .overview{
