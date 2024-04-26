@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.bg-img{
+    background-image: url("https://images.unsplash.com/photo-1529311182341-f6e4767abf24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDExOXxXZENocWxzSk45Y3x8ZW58MHx8fHx8");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.header{
+    height: 80px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.logo{
+    width: 200px;
+    display: inline-block;
+}
+
+.logo img{
+    width: 100%;
+}
+
+.moviecard{
+    height: 550px;
+    overflow: hidden;
+    position: relative;
+    border: black solid 2px;
+}
+
+.moviecard img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+}
+
+.ratSec{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: black;
+    padding: 1rem;
+}
+
+.overview{
+    position: absolute;
+    background-color: white;
+    top: 40%;
+    height: 70%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    transition: all 0.4s linear;
+    opacity: 0;
+    transform: translateY(0px);
+    border: black solid 2px;
+}
+
+.moviecard:hover .overview,
+.moviecard:focus .overview,
+.moviecard:active .overview{
+    opacity: 1;
+    transform: translateY(-50px);
+}
+
+.movieName{
+    height: 33px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, 0.7);
+}
+
+.action{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.closemodal{
+    cursor: pointer;
+}
+
+.backdrop{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.6);
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    display: none;
+    animation: fadeIn 0.4s linear;
+}
+
+.moviemodal{
+    position: fixed;
+    width: 60%;
+    left: 20%;
+    top: 15%;
+    display: none;
+    animation: slidedown 0.4s linear;
+}
+
+.moviemodal.active,
+.backdrop.active{
+    display: block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes slidedown{
+    from{
+        transform: translateY(-80px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fetch Movie Modal</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+         crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+		<link rel="stylesheet" href="./assets/css/style.css"></link>
+	</head>
+		<body class="bg-img">
+            <header class="header">
+                <div class="container-fluid p-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a href="index.html" class="logo">
+                                <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg">
+
+                            </a>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <button class="btn btn-success" id="addbtn">Add Movie</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container mt-5">
+                <div class="row" id="moviecon">
+                    <!--<div class="col-md-4">
+                        <div class="card">
+                            <figure class="moviecard mb-0">
+                                <img src="data:image/jpeg;base64,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" alt="imgtitle" title="imgtitle">
+                                <figcaption>
+                                    <div class="ratSec">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <h3 class="movieName">Movie Title</h3>
+                                            </div>
+                                            <div class="col-2">
+                                                <p>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="overview">
+                                        <h3>Movie Title</h3>
+                                        <em>Overview</em>
+                                        <p>Overview Discription</p>
+                                        <div class="action">
+                                            <button class="btn btn-success">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="backdrop closemodal" id="backdrop">
+
+                </div>
+                <div class="card moviemodal" id="moviemodal">
+                    <div class="card-header">
+                        <h3>Add Movie Information <i class="fas fa-times float-right closemodal"></i> </h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="movieForm">
+                            <div class="form-group">
+                                <label for="Movie Title">Movie Title</label>
+                                <input type="text" required class="form-control" id="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="Image">Image</label>
+                                <input type="text" required class="form-control" id="image">
+                            </div>
+                            <div class="form-group">
+                                <label for="Overview">Overview</label>
+                                <textarea class="form-control" required id="overview" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="Rating">Rating</label>
+                                <select required class="form-control" id="rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-outline-success" id="subBtn">Add Movie</button>
+                                <button type="button" class="btn btn-outline-danger closemodal">Close</button>
+                                <button type="button" class="btn btn-outline-warning d-none" id="updBtn">Update Movie</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="loader d-none" id="loader">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">
+                            Loading.....
+                        </span>
+                    </div>
+                </div>
+				
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			 integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+			<script src="./assets/js/app.js"></script>
+		</body>
+</html>
