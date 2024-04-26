@@ -52,7 +52,7 @@ const backdrophide = () =>{
 const addcard = (obj) =>{
     let card = document.createElement("div");
     card.id = obj.id;
-    card.className = "col-md-4 col-sm-12";
+    card.className = "col-md-4 col-12";
     card.innerHTML = `<div class="card mt-5">
                         <figure class="moviecard mb-0" id="${obj.id}">
                             <img src="${obj.image}" alt="${obj.title}" title="${obj.title}">
@@ -89,7 +89,7 @@ const addcard = (obj) =>{
 const templating = (arr) =>{
     let result = ``;
     arr.forEach(obj => {
-        result += `<div class="col-md-4 col-sm-12">
+        result += `<div class="col-md-4 col-12">
                         <div class="card mt-5">
                             <figure class="moviecard mb-0" id="${obj.id}">
                                 <img src="${obj.image}" alt="${obj.title}" title="${obj.title}">
